@@ -19,7 +19,8 @@ A practical **Proof-of-Concept** demonstrating [Cargo feature flags](https://doc
 
 1. **Clone & Setup**
    ```bash
-   git clone <repo>
+   git clone https://github.com/rahulchauhan15/rust-feature-lab
+   
    cd cargo-feature-mock-poc
    cp .env.example .env   # Optional, no keys for mock
    ```
@@ -79,21 +80,6 @@ A practical **Proof-of-Concept** demonstrating [Cargo feature flags](https://doc
 
 **Key Insight**: Features enable/disable mock _code_ at compile-time (smaller binaries), env provides runtime override for flexibility (e.g. prod emergencies).
 
-### Architecture (Mermaid)
-
-```mermaid
-graph TD
-    Main[main.rs] -->|AppConfig| Config
-    Main -->|build_*| Services
-    Services -->|trait Arc<dyn>| AppState
-    Services --> MockWeather['MockWeatherService<br/>(static data)'] 
-    Services --> LiveWeather['LiveWeatherService<br/>(reqwest → OWM)']
-    Services --> MockS3['MockS3Service']
-    Services --> LiveS3['LiveS3Service']
-    AppState --> Router[router.rs → handlers]
-    Handlers --> Weather['/weather/:city']
-    Handlers --> S3['/s3/upload']
-```
 
 ##  Cargo Features Deep Dive
 
@@ -131,8 +117,8 @@ mock = []  # No deps needed for mocks
 - **No Feature Hell**: One flag + env = simple.
 - **Trait Magic**: Dyn dispatches calls without generics overhead.
 
-Questions? Open issue/PR. Learn by hacking handlers/services!
+Questions? Open issue/PR. 
 
 ---
-*Crafted for Rust devs learning features the practical way.*
+
 
