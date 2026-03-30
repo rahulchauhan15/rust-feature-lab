@@ -104,13 +104,6 @@ pub fn build_weather_service(...) -> Arc<dyn WeatherService> {
 mock = []  # No deps needed for mocks
 ```
 
-##  Development
-
-- **Check**: `cargo check`
-- **Fmt/Clippy**: `cargo fmt && cargo clippy`
-- **Add Test**: See TODO.md for integration tests idea.
-- **Docker?** Easy: Add `Dockerfile` w/ multi-stage + feature arg.
-
 ##  Why This Pattern?
 
 - **Battery-included**: Works OOB for dev/prod.
